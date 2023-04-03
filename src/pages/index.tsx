@@ -16,11 +16,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectEventDetail, selectShowEventDetail } from "~/redux/redux/selectors";
 import { setShow } from "~/redux/slices/eventDetail";
 import { Fragment, useState } from "react";
+import { Ranking } from "~/components/Ranking";
+import { Profile } from "~/components/Profile";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
-
 
 interface BottomIconProps {
   pageSelected: string
@@ -49,6 +50,11 @@ const BottomIcon = ({ pageSelected }: BottomIconProps): JSX.Element => {
   }
 }
 
+const RightIcon = () =>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg>
+
 const Home: NextPage = () => {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
@@ -59,6 +65,7 @@ const Home: NextPage = () => {
 
   const [category, setCategory] = useState("Events");
   const [page, setPage] = useState("Home");
+  const [rangeValue, setRangeValue] = useState(0);
 
   const eventList = [{
     eventName: "HK 2023",
@@ -71,6 +78,31 @@ const Home: NextPage = () => {
     hostList: ["Choko Wallet", "Wormhole3"],
     time: "2023-04-03T06:18:27.925Z",
   }, {
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
+  }, {
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
+  }, {
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
+  },{
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
+  },{
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
+  },{
     eventName: "HK 2023",
     eventPrice: "Free",
     hostList: ["Choko Wallet", "Wormhole3"],
@@ -143,11 +175,13 @@ const Home: NextPage = () => {
             <div className="w-full">
               {eventList.map((evt, index) => {
                   return <Event 
-                    key={index} 
+                    key={index}
                     eventName={evt.eventName}
                     eventPrice={evt.eventPrice}
                     hostList={evt.hostList}
-                    time={evt.time}
+                    time={evt.time} 
+                    location={""} 
+                    defaultTweet={""}                  
                   />
                 }
               )}
@@ -167,12 +201,11 @@ const Home: NextPage = () => {
             <div className="w-full">
               {eventList.map((evt, index) => {
                   return <Event 
-                    key={index} 
+                    key={index}
                     eventName={evt.eventName}
                     eventPrice={evt.eventPrice}
                     hostList={evt.hostList}
-                    time={evt.time}
-                  />
+                    time={evt.time} location={""} defaultTweet={""}                  />
                 }
               )}
             </div>
@@ -191,8 +224,8 @@ const Home: NextPage = () => {
         leaveFrom="opacity-100 rotate-0 scale-100 "
         leaveTo="opacity-0 scale-95 "
       >
-        <main className="flex min-h-screen pb-20 flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-          Ranking
+        <main className="flex pt-3 h-screen justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+          <Ranking />
         </main>
       </Transition>
 
@@ -207,13 +240,10 @@ const Home: NextPage = () => {
         leaveFrom="opacity-100 rotate-0 scale-100 "
         leaveTo="opacity-0 scale-95 "
       >
-        <main className="flex min-h-screen pb-20 flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-          Profile
+        <main className="flex pt-3 h-screen justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+          <Profile />
         </main>
       </Transition>
-
-
-      
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 z-50 w-full h-16 ">
@@ -233,18 +263,30 @@ const Home: NextPage = () => {
           <Dialog.Panel className='fixed bottom-0 left-0 z-50 w-full h-80 rounded-t-2xl bg-gray-400'>
             <Dialog.Title
               as='h3'
-              className='text-lg font-medium leading-6 flex items-center mb-6 bg-slate-200 rounded-t-2xl h-16'
+              className='text-lg font-medium leading-6 flex items-center bg-gray-500 rounded-t-2xl h-16 p-5'
             >
-              <p className=' text-gray-200 dark:text-white flex flex-grow font-poppins'>
+              <p className=' text-slate-200 dark:text-white flex flex-grow font-poppins'>
                 {eventDetails.eventName}
               </p>
               <div onClick={() => dispatch(setShow(false))} >
-                <XIcon className=' text-gray-200 h-8 w-8 cursor-pointer dark:text-white' />
+                <XIcon className=' text-gray-200 h-6 w-6 cursor-pointer dark:text-white' />
               </div>
             </Dialog.Title>
 
-            <div className=' p-2 bg-gray-400'>
-                <h1>Test</h1>
+            <div className=' p-2 bg-gray-400 grid grid-cols-12 w-full h-64 flex content-center'>
+                <div className="bg-red col-span-7 w-full h-full">
+                  Location: 
+                </div>
+                <div className="bg-red col-span-5">
+                  <div className="text-sm text-gray-600 p-2">Check In on Twitter</div>
+                  <button 
+                    type="button" 
+                    className="text-slate-200 bg-gray-500 font-small rounded-full text-lg px-5 py-2.5 text-center backdrop-blue-sm"
+                  >
+                    <RightIcon />
+                  </button>
+                </div>
+
             </div>
           </Dialog.Panel>
         </BaseModal>
