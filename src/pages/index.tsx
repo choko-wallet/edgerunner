@@ -8,18 +8,32 @@ import { Promotion } from "~/components/Promotion";
 import { Event } from "~/components/Event";
 
 import { api } from "~/utils/api";
+import { useState } from "react";
+import BaseModal from "~/components/BaseModal";
+import { Dialog } from "@headlessui/react";
+
+import {XIcon} from '@heroicons/react/solid'
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
+  const [bottomSheet, setBottomSheet] = useState("HK 2023");
+
   const eventList = [{
-    name: "test", pic: "test", time: "test"
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
   }, {
-    name: "test", pic: "test", time: "test"
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
   }, {
-    name: "test", pic: "test", time: "test"
-  },{
-    name: "test", pic: "test", time: "test"
+    eventName: "HK 2023",
+    eventPrice: "Free",
+    hostList: ["Choko Wallet", "Wormhole3"],
+    time: "2023-04-03T06:18:27.925Z",
   }]
 
   return (
@@ -30,7 +44,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="sticky top-0 z-50 backdrop-blur-lg" >
+      <div className="sticky top-0 z-50 backdrop-blur-md backdrop-grayscale-[.5]" >
         <TopNav />
       </div>
       <div className="p-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
@@ -41,13 +55,40 @@ const Home: NextPage = () => {
         {/* Promotion */}
         
 
-        {eventList.map((_evt, index) => {
-            return <Event key={index} />
+        {eventList.map((evt, index) => {
+            return <Event 
+              key={index} 
+              eventName={evt.eventName}
+              eventPrice={evt.eventPrice}
+              hostList={evt.hostList}
+              time={evt.time}
+              openDetails={(title) => setBottomSheet(title)}
+            />
           }
         )}
 
         {/* Bottom Navigation */}
         <BottomNav />
+
+        <BaseModal show={bottomSheet !== ""} close={() => setBottomSheet("")}>
+          <Dialog.Panel className='fixed bottom-0 left-0 z-50 w-full h-80 rounded-t-2xl bg-gray-400'>
+            <Dialog.Title
+              as='h3'
+              className='text-lg font-medium leading-6 flex items-center mb-6 bg-slate-200 rounded-t-2xl h-16'
+            >
+              <p className=' text-gray-200 dark:text-white flex flex-grow font-poppins'>
+                {bottomSheet}
+              </p>
+              <div onClick={() => setBottomSheet("")} >
+                <XIcon className=' text-gray-200 h-8 w-8 cursor-pointer dark:text-white' />
+              </div>
+            </Dialog.Title>
+
+            <div className=' p-2 bg-gray-400'>
+                <h1>Test</h1>
+            </div>
+          </Dialog.Panel>
+        </BaseModal>
       </main>
     </div>
   );
