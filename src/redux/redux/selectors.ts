@@ -1,16 +1,9 @@
 // Copyright 2021-2022 @choko-wallet/app-redux authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
+import { EventDetailsType } from '~/types';
 import type { RootState } from './store';
 
-import { KnownNetworks, UserAccount } from '@choko-wallet/core';
-
 /* eslint-disable */
-// userAccount selectors
-export const selectCurrentUserAccount = (state: RootState): UserAccount => state.user.currentUserAccount;
-export const selectUserAccount = (state: RootState): UserAccount[] => state.user.userAccount;
-export const selectCurrentUserAccountIndex = (state: RootState): number => state.user.currentUserAccountIndex;
-export const selectMpcUserAccountIndex = (state: RootState): number => state.user.mpcUserAccountIndex;
-
-export const selectStatus = (state: RootState): Record<string, boolean> => state.status.status;
-export const selectLoading = (state: RootState): string => state.status.loading;
+export const selectEventDetail = (state: RootState): EventDetailsType => state.eventDetail.eventDetail;
+export const selectShowEventDetail = (state: RootState): boolean => state.eventDetail.show;

@@ -3,10 +3,10 @@
 
 import { combineReducers, Reducer } from '@reduxjs/toolkit';
 
-import statusSlice from '../slices/status';
+import eventDetailSlice from '../slices/eventDetail';
 
 export const rootReducer: Reducer = combineReducers({
-  status: statusSlice,
+  eventDetail: eventDetailSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
