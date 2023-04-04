@@ -14,6 +14,7 @@ export const authOptions = {
     TwitterProvider({
       clientId: process.env.TWITTER_ID!,
       clientSecret: process.env.TWITTER_SECRET!,
+      version: "2.0"
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID!,

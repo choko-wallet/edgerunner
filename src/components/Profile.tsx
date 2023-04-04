@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {signIn, useSession} from 'next-auth/react';
+import {signIn, signOut, useSession} from 'next-auth/react';
 
 interface Props {
   address: string
@@ -74,6 +74,12 @@ export const Profile = ({ address }: Props ) => {
         <div className='w-full h-[1px] bg-gray-300'></div>
       </div>
 
+      <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5' onClick={() => {
+        localStorage.removeItem("address");
+        signOut().catch(console.error)
+      }}>
+        SignOut
+      </p>
       <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5'>
         For now, all your behaviours will be automatically loaded by Wormhole3
       </p>

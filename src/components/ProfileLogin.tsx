@@ -5,7 +5,7 @@ export const ProfileLogin = () => {
   
   const login = async() => {
     localStorage.setItem('pageRedirect', 'Profile')
-    await signIn("google")
+    await signIn("twitter")
   }
 
   return <div className='w-full p-3'>
