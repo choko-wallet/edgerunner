@@ -1,37 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {signIn, useSession} from 'next-auth/react';
 
 interface Props {
-  address: string
+  enterChoko: () => Promise<void>
 }
-export const Profile = ({ address }: Props ) => {
+export const ProfileEnter = ({ enterChoko }: Props ) => {
+  
   const {data: session} = useSession();
-
-  useEffect(() => {
-    localStorage.removeItem('pageRedirect')
-  }, []);
 
   return <div className='w-full p-3'>
     <div className=' flex flex-col items-center justify-center space-y-4 p-12 bg-slate-200 rounded-lg drop-shadow-xl' >
       <p className=' text-black flex flex-grow font-roboto text-[20px] sm:text-[24px] font-semibold whitespace-nowrap pb-2'>
         <span className='text-black font-normal mr-2 whitespace-nowrap'>
-          Connected with
+            You are signed in with 
         </span>
-        <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
+        {/* <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
           {`CHOKO  `}<span className='text-sm'>Beta ²</span>
-        </a>
+        </a> */}
       </p>
 
-      <p className=' text-black flex flex-grow font-roboto text-[20px] sm:text-[24px] font-semibold whitespace-nowrap pb-2'>
-        <span className='text-black font-normal mr-2 whitespace-nowrap'>
-          Also, Welcome to
-        </span>
-        <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
-          {`Wormhole3  `}<span className='text-sm'>Alpha ²</span>
-        </a>
-      </p>
-
-      
       <div className='flex items-center justify-between'>
         <img
           alt=''
@@ -54,7 +41,7 @@ export const Profile = ({ address }: Props ) => {
       </div>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        {address}
+        Now you can create a wallet address!
       </p>
 
       <div className='flex space-x-2 items-center justify-center py-2'>
@@ -63,19 +50,20 @@ export const Profile = ({ address }: Props ) => {
         </svg>
       </div>
 
-      {/* <button
+      <button
         className='flex items-center justify-center text-[20px] text-gray-700 rounded-md hover:shadow-sm p-2 w-full border-2 border-indigo-400 font-inter transition duration-150 active:scale-95 ease-in-out'
         onClick={() => enterChoko()}
       >
         Create Wallet with CHOKO
-      </button><br/> */}
+      </button><br/>
 
       <div className='flex items-center justify-center w-full my-5'>
         <div className='w-full h-[1px] bg-gray-300'></div>
       </div>
 
       <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5'>
-        For now, all your behaviours will be automatically loaded by Wormhole3
+        CHOKO is a bleeding edge MPC & EIP4337 Web3 Portal. To proceed, you will be running a native light node directly inside of your browser to generate a crypto wallet. To learn more - join our  
+        <a className="underline decoration-rose-400 underline-offset-4 decoration-1" target="_blank" href="https://google.com"> discord channel.</a>. 
       </p>
     </div>
   </div>

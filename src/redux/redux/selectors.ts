@@ -7,3 +7,8 @@ import type { RootState } from './store';
 /* eslint-disable */
 export const selectEventDetail = (state: RootState): EventDetailsType => state.eventDetail.eventDetail;
 export const selectShowEventDetail = (state: RootState): boolean => state.eventDetail.show;
+
+export const selectLoadingText = (state: RootState): string => state.loading.text;
+export const selectIsLoading = (state: RootState): boolean => state.loading.loading;
+
+export const selectAccount = (state: RootState): string => state.account.account;

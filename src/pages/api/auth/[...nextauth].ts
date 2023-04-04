@@ -6,6 +6,7 @@
 
 import NextAuth from "next-auth";
 import TwitterProvider from "next-auth/providers/twitter";
+import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -13,7 +14,10 @@ export const authOptions = {
     TwitterProvider({
       clientId: process.env.TWITTER_ID!,
       clientSecret: process.env.TWITTER_SECRET!,
-      version: "2.0",
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID!,
+      clientSecret: process.env.GOOGLE_SECRET!,
     }),
   ],
   callbacks: {
@@ -25,7 +29,7 @@ export const authOptions = {
 
     // @ts-ignore
     jwt({ token, user, account, profile }) {
-      console.log(profile)
+      console.log(token, user, account, profile)
       if (user && account && account.provider) {
         token = {
           ...token,

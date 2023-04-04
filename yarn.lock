@@ -9,6 +9,14 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
+"@choko-wallet/abi@0.1.10-19":
+  version "0.1.10-19"
+  resolved "https://registry.yarnpkg.com/@choko-wallet/abi/-/abi-0.1.10-19.tgz#a0d03ca4483c1c68c16f17f438fab1f1a00d1378"
+  integrity sha512-NxJ3ga0P91zaQlanQiRSpCn3rxRFCbr+85QjNIX8sHOewTbK6E1Yomk9l3jaAVQiduFBpDQeZadsn3wuKtl1Dw==
+  dependencies:
+    "@choko-wallet/core" "0.1.10-19"
+    ethers "^5.7.2"
+
 "@choko-wallet/account-abstraction@0.1.10-19":
   version "0.1.10-19"
   resolved "https://registry.yarnpkg.com/@choko-wallet/account-abstraction/-/account-abstraction-0.1.10-19.tgz#8fe4796a5383644c97f0db8f51b090af364930e2"
@@ -3720,6 +3728,11 @@ react-redux@^8.0.5:
     hoist-non-react-statics "^3.3.2"
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
+
+react-spinners@^0.13.8:
+  version "0.13.8"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.13.8.tgz#5262571be0f745d86bbd49a1e6b49f9f9cb19acc"
+  integrity sha512-3e+k56lUkPj0vb5NDXPVFAOkPC//XyhKPJjvcGjyMNPWsBKpplfeyialP74G7H7+It7KzhtET+MvGqbKgAqpZA==
 
 react-ssr-prepass@^1.5.0:
   version "1.5.0"
