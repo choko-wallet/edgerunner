@@ -44,7 +44,10 @@ export const Profile = ({ address }: Props ) => {
             {session?.user?.name}
           </h2>
           <h3 className='text-sm text-gray-400 w-28 sm:w-44 md:w-48'>
-            {session?.user?.email}
+            {
+              // @ts-ignore
+              `@${session?.user?.twitterHandler}`
+            }
           </h3>
         </div>
 

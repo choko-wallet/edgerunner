@@ -25,6 +25,8 @@ export const authOptions = {
     // @ts-ignore
     session({ session, token, user }) {
       session.user.provider = token.provider;
+      session.user.email = token.email;
+      session.user.twitterHandler = token.twitterHandler;
       return session;
     },
 
@@ -35,6 +37,8 @@ export const authOptions = {
         token = {
           ...token,
           provider: account.provider,
+          email: profile.data.id, // this is actually twitterId
+          twitterHandler: profile.data.username,
         };
       }
       return token;
