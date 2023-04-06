@@ -167,48 +167,6 @@ const Home: NextPage<Props> = ({ token }: Props) => {
     }
   };
   
-  const eventList = [{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  },{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  },{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  },{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }]
-
   useEffect(() => {
     dispatch(setLoading("Loading Account"))
     const shouldBeOnPage = localStorage.getItem("pageRedirect");

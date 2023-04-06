@@ -25,7 +25,7 @@ export const EventDisplay = ({eventDetail, showDetails}: Props): JSX.Element => 
   const {eventName, hostList, startTime, endTime} = eventDetail;
 
   return <div className='flex w-full py-1 px-2'>
-    <div className="w-full border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700 h-48 p-4">
+    <div className="w-full border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700 h-54 p-4">
       
       <div className="grid grid-col-12">
         <h5 className="mb-1 text-xl font-medium text-slate-200">{eventName}</h5>

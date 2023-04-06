@@ -191,9 +191,9 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
       </Head>
 
       <main className="h-screen bg-landing-bg bg-cover">
-        <div className="flex flex-col justify-around py-10 w-full h-full backdrop-blur-sm backdrop-grayscale-[.7]">
+        <div className="flex flex-col justify-around py-10 w-full h-full backdrop-blur-[3px] backdrop-grayscale-[.3]">
           <div className="flex w-full h-20 text-2xl text-slate-200 font-mono justify-center">
-            Hong Kong 2023
+            Web3 HK 2023
           </div>
           <div className="flex w-full text-2xl text-slate-200 justify-center pl-4">
             <img src={logoImg.src} width={400} className="invert-[10%]" />
@@ -215,7 +215,7 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
 
               <div className="px-10 m-5">
                 <button
-                  className='font-mono items-center justify-center text-[18px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                  className='font-mono items-center justify-center text-[13px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
                   onClick={() => router.push("/home")}
                 >
                   Skip To Explore
@@ -224,7 +224,7 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
             </div> : <div className="flex justify-start flex-col">
               <div className="px-10 m-5 flex">
                   <button
-                    className='font-mono items-center bg-indigo-400 justify-center text-[20px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                    className='font-mono items-center bg-indigo-400 justify-center text-[18px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
                     onClick={() => router.push("/home")}
                   >
                     Enter
@@ -232,7 +232,7 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
               </div>
               <div className="px-10 m-5 flex">
                   <button
-                    className='font-mono items-center justify-center text-[15px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                    className='font-mono items-center justify-center text-[12px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
                     onClick={() => {
                       localStorage.removeItem("address");
                       signOut().catch(console.error)
