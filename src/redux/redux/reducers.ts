@@ -10,7 +10,7 @@ import accountSlice from '../slices/account';
 export const rootReducer: Reducer = combineReducers({
   eventDetail: eventDetailSlice,
   loading: loadingSlice,
-  account: accountSlice
+  account: accountSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

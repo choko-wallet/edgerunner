@@ -37,11 +37,7 @@ export const ProfileLogin = () => {
         <img
           // loading='lazy'
           className='w-6 h-6 ml-3'
-          /* eslint-disable */
-          // @ts-ignore
-          src={"https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg"}
-          /* eslint-enable */
-          // src='https://authjs.dev/img/providers/google.svg'
+          src={"https://authjs.dev/img/providers/twitter.svg"}
         />
       </button><br/>
 

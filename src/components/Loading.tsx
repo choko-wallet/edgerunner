@@ -12,7 +12,7 @@ function Loading (): JSX.Element {
 
   if (!isLoading) return <></>;
 
-  return <div className='bg-indigo-400 h-[95vh] flex flex-col items-center justify-center'>
+  return <div className='bg-indigo-400 h-screen flex flex-col items-center justify-center'>
       <div className='p-5'>
         <p className='text-xl'>
           <span className='text-rose-300 font-poppins w-36 '>{loadingText}</span>

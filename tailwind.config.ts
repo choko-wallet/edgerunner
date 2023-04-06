@@ -4,6 +4,9 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "landing-bg": "url('../../public/bg.jpg')"
+      },
       keyframes: {
         blur: {
           '0%': { filter: "blur(0px)" },

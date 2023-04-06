@@ -3,18 +3,14 @@
 
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { setShow } from '~/redux/slices/eventDetail';
 
 interface Props {
   children: JSX.Element;
   show: boolean;
+  close: () => void;
 }
 
-function BaseModal ({ children, show}: Props): JSX.Element {
-
-  const dispatch = useDispatch();
-
+function BaseModal ({ children, show, close}: Props): JSX.Element {
 
   return (
     <Transition appear
@@ -22,7 +18,7 @@ function BaseModal ({ children, show}: Props): JSX.Element {
       show={show}>
       <Dialog as='div'
         className='relative z-50' 
-        onClose={() => dispatch(setShow(false))}
+        onClose={close}
       >
         <Transition.Child
           as={Fragment}
@@ -37,7 +33,7 @@ function BaseModal ({ children, show}: Props): JSX.Element {
         </Transition.Child>
 
         <div className='fixed inset-0 overflow-y-auto'>
-          <div className='flex min-h-full items-center justify-center p-4 text-center '>
+          <div className='flex h-full items-center p-4 text-center '>
             <Transition.Child
               as={Fragment}
               enter='ease-out duration-300'

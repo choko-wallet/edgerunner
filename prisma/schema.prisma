@@ -6,12 +6,18 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
-model Example {
+model Event {
     id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    startTime DateTime
+    endTime   DateTime
+    eventName String
+    hostList  String
+    locationText String
+    locationGoogle String
+    tweet String
+    hashTag String
 }

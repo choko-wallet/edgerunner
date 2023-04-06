@@ -3,9 +3,9 @@ import Head from "next/head";
 
 import { TopNav } from "~/components/TopNav";
 import { Promotion } from "~/components/Promotion";
-import { Event } from "~/components/Event";
+import { EventDisplay } from "~/components/Event";
 
-// import { api } from "~/utils/api";
+import { api } from "~/utils/api";
 import BaseModal from "~/components/BaseModal";
 import { Dialog, Tab, Transition } from "@headlessui/react";
 
@@ -17,8 +17,7 @@ import superagent from 'superagent';
 import { XIcon} from '@heroicons/react/outline'
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectAccount, selectEventDetail, selectIsLoading, selectShowEventDetail } from "~/redux/redux/selectors";
-import { setShow } from "~/redux/slices/eventDetail";
+import { selectAccount, selectEventDetail, selectIsLoading } from "~/redux/redux/selectors";
 import { Fragment, useEffect, useState } from "react";
 import { Ranking } from "~/components/Ranking";
 
@@ -28,10 +27,13 @@ import { ProfileEnter } from "~/components/ProfileEnter";
 
 import Loading from "~/components/Loading";
 import { cancelLoading, setLoading } from "~/redux/slices/loading";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { certificateToAuthHeader, mpcLocalKeyToAccount, runKeygenRequest, runKeyRefreshRequest } from "~/mpc";
 import { loadAccount, setAccount } from "~/redux/slices/account";
 import { hexToU8a, stringToU8a, u8aToHex } from "@skyekiwi/util";
+import { useRouter } from "next/router";
+
+import logoImg from '~/img/logo.png';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -112,19 +114,19 @@ const generateOrRefreshAccount = async (
 };
 
 
-const Home: NextPage<Props> = ({ token }: Props) => {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
+const Landing: NextPage<Props> = ({ token }: Props) => {
+
   const {data: session} = useSession()
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const showEventDetails = useSelector(selectShowEventDetail);
-  const eventDetails = useSelector(selectEventDetail);
   const isLoading = useSelector(selectIsLoading);
   const userAddr = useSelector(selectAccount);
-
-  const [category, setCategory] = useState("Events");
-  const [page, setPage] = useState("Home");
+  
+  const [showLogin, setShowLogin] = useState(false);
+  const [loginStep, setLoginStep] = useState("login");
+  const [loginPending, setLoginPending] = useState(true);
 
   const enterChoko = async () => {
     dispatch(setLoading('Setting up an MPC Account ... '));
@@ -159,60 +161,28 @@ const Home: NextPage<Props> = ({ token }: Props) => {
       console.error('HERE', e);
     }
   };
-  
-  const eventList = [{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }, {
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  },{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  },{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  },{
-    eventName: "HK 2023",
-    eventPrice: "Free",
-    hostList: ["Choko Wallet", "Wormhole3"],
-    time: "2023-04-03T06:18:27.925Z",
-  }]
 
   useEffect(() => {
     dispatch(setLoading("Loading Account"))
-    const shouldBeOnPage = localStorage.getItem("pageRedirect");
-    setPage(shouldBeOnPage ? shouldBeOnPage : "Home")
     dispatch(loadAccount());
     dispatch(cancelLoading())
   }, [dispatch])
 
+  useEffect(() => {
+    if (userAddr) {
+      setLoginPending(false)
+      setShowLogin(false)
+    } else {
+      if (token) {
+        setLoginStep("enter")
+        setShowLogin(true)
+      }
+    }
+  }, [userAddr]);
+
   if (isLoading) return <Loading />
   return (
-    <div className="bg-indigo-400">
+    <div>
       <Head>
         <title>Edgerunner</title>
         <meta name="description" content="edgerunner" />
@@ -220,181 +190,69 @@ const Home: NextPage<Props> = ({ token }: Props) => {
         <script async defer data-website-id="29b8f398-606e-496f-b31a-4e8d8e2abe76" src="https://analytics.skye.kiwi/umami.js"></script>
       </Head>
 
-      <div className="sticky top-0 z-50 backdrop-blur-md backdrop-grayscale-[.5]" >
-        <TopNav />
-      </div>
-
-      {/* Events */}
-      <Transition
-        as={Fragment}
-        show={page === "Home"}
-        enter="transform transition duration-[400ms]"
-        enterFrom="opacity-0 scale-50"
-        enterTo="opacity-100 rotate-0 scale-100"
-        leave="transform duration-200 transition ease-in-out"
-        leaveFrom="opacity-100 rotate-0 scale-100 "
-        leaveTo="opacity-0 scale-95 "
-      >
-        {/* Main List */}
-        <main className="flex min-h-screen pb-20 flex-col items-center justify-center bg-indigo-400">
-          {/* Promotion */}
-          <div className="w-full p-2">
-            <Promotion />
+      <main className="h-screen bg-landing-bg bg-cover">
+        <div className="flex flex-col justify-around py-10 w-full h-full backdrop-blur-sm backdrop-grayscale-[.7]">
+          <div className="flex w-full h-20 text-2xl text-slate-200 font-mono justify-center">
+            Hong Kong 2023
+          </div>
+          <div className="flex w-full text-2xl text-slate-200 justify-center pl-4">
+            <img src={logoImg.src} width={400} className="invert-[10%]" />
           </div>
 
-          <Tab.Group>
-            <Tab.List className="flex space-x-1 rounded-xl bg-gray-900/20 p-2 w-full">
-              {
-                ["Events", "Meetups"].map(categories => (
-                  <Tab
-                    key={categories}
-                    onClick={() => setCategory(categories)}
-                    className={({ selected }) =>
-                      classNames(
-                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-slate-200',
-                        selected
-                          ? 'bg-slate-700 shadow'
-                          : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
-                      )
-                    }
-                  >
-                    {categories}
-                  </Tab>
-                ))
-              }
-            </Tab.List>
-          </Tab.Group>
-
-          <Transition
-            as={Fragment}
-            show={category === "Events"}
-            enter="transform transition duration-[400ms]"
-            enterFrom="opacity-0 scale-50"
-            enterTo="opacity-100 rotate-0 scale-100"
-            leave="transform duration-200 transition ease-in-out"
-            leaveFrom="opacity-100 rotate-0 scale-100 "
-            leaveTo="opacity-0 scale-95 "
-          >
-            <div className="w-full">
-              {eventList.map((evt, index) => {
-                  return <Event 
-                    key={index}
-                    eventName={evt.eventName}
-                    eventPrice={evt.eventPrice}
-                    hostList={evt.hostList}
-                    time={evt.time} 
-                    location={""} 
-                    defaultTweet={""}                  
-                  />
-                }
-              )}
-            </div>
-          </Transition>
-
-          <Transition
-            as={Fragment}
-            show={category === "Meetups"}
-            enter="transform transition duration-[400ms]"
-            enterFrom="opacity-0 scale-50"
-            enterTo="opacity-100 rotate-0 scale-100"
-            leave="transform duration-200 transition ease-in-out"
-            leaveFrom="opacity-100 rotate-0 scale-100 "
-            leaveTo="opacity-0 scale-95 "
-          >
-            <div className="w-full">
-              {eventList.map((evt, index) => {
-                  return <Event 
-                    key={index}
-                    eventName={evt.eventName}
-                    eventPrice={evt.eventPrice}
-                    hostList={evt.hostList}
-                    time={evt.time} location={""} defaultTweet={""}/>
-                }
-              )}
-            </div>
-          </Transition>
-        </main>
-      </Transition>
-
-      {/* Ranking */}
-      <Transition
-        as={Fragment}
-        show={page === "Ranking"}
-        enter="transform transition duration-[200ms]"
-        enterFrom="opacity-0 scale-50"
-        enterTo="opacity-100 rotate-0 scale-100"
-        leave="transform duration-200 transition ease-in-out"
-        leaveFrom="opacity-100 rotate-0 scale-100 "
-        leaveTo="opacity-0 scale-95 "
-      >
-        <main className="flex pt-3 h-screen justify-center bg-indigo-400">
-          <Ranking />
-        </main>
-      </Transition>
-
-      {/* Profile */}
-      <Transition
-        as={Fragment}
-        show={page === "Profile"}
-        enter="transform transition duration-[200ms]"
-        enterFrom="opacity-0 scale-50"
-        enterTo="opacity-100 rotate-0 scale-100"
-        leave="transform duration-200 transition ease-in-out"
-        leaveFrom="opacity-100 rotate-0 scale-100 "
-        leaveTo="opacity-0 scale-95 "
-      >
-        <main className="flex pt-3 h-screen justify-center bg-indigo-400">
-          {
-            userAddr ? <Profile address={userAddr} /> : 
-              token ? <ProfileEnter enterChoko={enterChoko}/> : <ProfileLogin />
-          }
-        </main>
-      </Transition>
-
-      {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 z-50 w-full h-16 ">
-        <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium hover:backdrop-blur-lg backdrop-blur-md hover:ease-in-out backdrop-grayscale-[.7]">
-            {["Home", "Ranking", "Profile"].map(pageSelect => {
-              return <button type="button" className="inline-flex flex-col items-center justify-center px-5 border-r-1 border-gray-200 group"
-                onClick={() => setPage(pageSelect)}  
-              >
-                  <BottomIcon pageSelected={pageSelect} />
-                  <span className="text-sm text-slate-300 group-hover:text-rose-300">{pageSelect}</span>
-              </button>
-            })}
-        </div>
-      </div>
-
-      <BaseModal show={showEventDetails} >
-          <Dialog.Panel className='fixed bottom-0 left-0 z-50 w-full h-80 rounded-t-2xl'>
-            <Dialog.Title
-              as='h3'
-              className='text-lg font-medium leading-6 flex items-center bg-rose-400 rounded-t-2xl h-16 p-5'
-            >
-              <p className=' text-slate-200 flex flex-grow'>
-                {eventDetails.eventName}
-              </p>
-              <div onClick={() => dispatch(setShow(false))} >
-                <XIcon className='text-gray-200 h-6 w-6 cursor-pointer text-slate-200' />
+          <div className="flex w-full text-lg text-slate-200 justify-center font-mono">
+            {`Brought To You By  `}<div className="underline pl-2"><a href="https://staging.choko.app" target="_blank">CHOKO Beta</a></div>
+          </div>
+          {/* Login Part */}
+          {loginPending ? <div className="flex justify-start flex-col">
+              <div className="px-10">
+                <button
+                  className='flex font-mono items-center bg-indigo-400 justify-center text-[20px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                  onClick={() => setShowLogin(true)}
+                >
+                  Connect With Choko
+                </button>
               </div>
-            </Dialog.Title>
 
-            <div className=' p-2 bg-rose-200 grid grid-cols-12 w-full h-64 flex content-center'>
-                <div className="bg-red col-span-7 w-full h-full">
-                  Location: 
-                </div>
-                <div className="bg-red col-span-5">
-                  <div className="text-sm text-gray-600 p-2">Check In on Twitter</div>
-                  <button 
-                    type="button" 
-                    className="text-slate-200 bg-gray-500 font-small rounded-full text-lg px-5 py-2.5 text-center backdrop-blue-sm"
+              <div className="px-10 m-5">
+                <button
+                  className='font-mono items-center justify-center text-[18px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                  onClick={() => router.push("/home")}
+                >
+                  Skip To Explore
+                </button>
+              </div>
+            </div> : <div className="flex justify-start flex-col">
+              <div className="px-10 m-5 flex">
+                  <button
+                    className='font-mono items-center bg-indigo-400 justify-center text-[20px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                    onClick={() => router.push("/home")}
                   >
-                    <RightIcon />
+                    Enter
                   </button>
-                </div>
-
+              </div>
+              <div className="px-10 m-5 flex">
+                  <button
+                    className='font-mono items-center justify-center text-[15px] text-slate-200 rounded-md hover:shadow-sm p-3 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+                    onClick={() => {
+                      localStorage.removeItem("address");
+                      signOut().catch(console.error)
+                    }}
+                  >
+                    Sign Out
+                  </button>
+              </div>
             </div>
-          </Dialog.Panel>
+          }
+        </div>
+      </main>
+
+      <BaseModal show={showLogin} close={() => setShowLogin(false)}>
+        <Dialog.Panel className='z-50 w-full rounded-t-2xl'>
+          {
+            loginStep === 'login' ? <ProfileLogin /> : 
+              loginStep === 'enter' ? <ProfileEnter enterChoko={enterChoko}/> : null
+          }
+        </Dialog.Panel>
       </BaseModal>
     </div>
   );
@@ -423,4 +281,4 @@ export function getServerSideProps (context: NextPageContext) {
   }
 }
 
-export default Home;
+export default Landing;

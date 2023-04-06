@@ -22,15 +22,6 @@ export const Profile = ({ address }: Props ) => {
         </a>
       </p>
 
-      <p className=' text-black flex flex-grow font-roboto text-[20px] sm:text-[24px] font-semibold whitespace-nowrap pb-2'>
-        <span className='text-black font-normal mr-2 whitespace-nowrap'>
-          Also, Welcome to
-        </span>
-        <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
-          {`Wormhole3  `}<span className='text-sm'>Alpha ²</span>
-        </a>
-      </p>
-
       
       <div className='flex items-center justify-between'>
         <img
@@ -52,7 +43,7 @@ export const Profile = ({ address }: Props ) => {
         </div>
 
         <img className='w-8 h-8 mr-3'
-          src={"https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg"}
+          src={"https://authjs.dev/img/providers/twitter.svg"}
         />
       </div>
 

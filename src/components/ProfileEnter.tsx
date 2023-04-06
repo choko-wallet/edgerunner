@@ -22,15 +22,15 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
       <div className='flex items-center justify-between'>
         <img
           alt=''
-          className='rounded-full border p-[2px] w-10 h-10'
+          className='rounded-full border p-[2px] w-12 h-12'
           src={session?.user?.image as string}
         />
 
-        <div className='flex-1 mx-4'>
+        <div className='mx-4'>
           <h2 className='font-bold w-44 truncate'>
             {session?.user?.name}
           </h2>
-          <h3 className='text-sm text-gray-400 w-28 sm:w-44 md:w-48'>
+          <h3 className='text-sm text-gray-400 w-44'>
             
             {
               // @ts-ignore
@@ -40,7 +40,7 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
         </div>
 
         <img className='w-8 h-8 mr-3'
-          src={"https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg"}
+          src={"https://authjs.dev/img/providers/twitter.svg"}
         />
       </div>
 
