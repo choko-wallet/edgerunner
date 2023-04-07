@@ -383,13 +383,13 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
             </motion.div>
           </motion.div>
 
-          <div className="absolute bottom-10 flex w-full justify-center font-mono text-lg text-slate-200">
-            {`Brought To You By  `}
-            <div className="pl-2 underline">
+          <div className="absolute bottom-10 flex font-poppins text-[16px] font-semibold italic">
+            <p className="text-white">Brought To You By</p>
+            <p className="text-gradient pl-2 underline decoration-[#F7AB0A]/50 underline-offset-4">
               <a href="https://staging.choko.app" target="_blank">
                 CHOKO Beta
               </a>
-            </div>
+            </p>
           </div>
 
           {/* Login Part */}
