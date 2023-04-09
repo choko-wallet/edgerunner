@@ -43,8 +43,9 @@ const BottomIcon = ({ pageSelected }: BottomIconProps): JSX.Element => {
   switch(pageSelected) {
     case "Home":
       return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-300 group-hover:text-rose-300">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-    </svg>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 16.75a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H6.75Z"></path>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 1.976c-.671 0-1.263.221-1.879.574-.59.337-1.262.833-2.089 1.442l-3.677 2.71c-1.06.78-1.798 1.322-2.202 2.123-.404.8-.404 1.716-.403 3.033v3.697c0 1.367 0 2.47.117 3.337.12.9.38 1.658.981 2.26.602.602 1.36.86 2.26.982.867.116 1.97.116 3.337.116h7.11c1.367 0 2.47 0 3.337-.116.9-.122 1.658-.38 2.26-.982.602-.602.86-1.36.982-2.26.116-.867.116-1.97.116-3.337v-3.697c0-1.317.001-2.233-.403-3.033-.404-.8-1.142-1.343-2.203-2.124l-3.676-2.709c-.827-.61-1.5-1.105-2.09-1.442-.615-.353-1.207-.574-1.878-.574Zm-3.114 3.25c.872-.642 1.475-1.085 1.98-1.375.49-.28.82-.375 1.134-.375.315 0 .645.096 1.133.375.506.29 1.11.733 1.981 1.375l3.5 2.58c1.259.927 1.671 1.254 1.894 1.695.223.441.242.967.242 2.53V15.5c0 1.435-.002 2.436-.103 3.192-.099.734-.28 1.122-.556 1.399-.277.277-.665.457-1.4.556-.755.101-1.756.103-3.191.103h-7c-1.435 0-2.437-.002-3.192-.103-.734-.099-1.122-.28-1.399-.556-.277-.277-.457-.665-.556-1.4-.101-.755-.103-1.756-.103-3.191v-3.468c0-1.564.019-2.09.242-2.53.223-.442.635-.77 1.894-1.697l3.5-2.579Z"></path>
+      </svg>
 
     case "Ranking":
       return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-300 group-hover:text-rose-300">
@@ -52,9 +53,8 @@ const BottomIcon = ({ pageSelected }: BottomIconProps): JSX.Element => {
     </svg>
 
     case "Profile":
-      return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-300 group-hover:text-rose-300">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
+      return <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 32 32" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-300 group-hover:text-rose-300">
+        <path d="M16 14.41553c3.83691 0 6.95801-3.12109 6.95801-6.95752S19.83691.5 16 .5 9.04199 3.62158 9.04199 7.45801 12.16309 14.41553 16 14.41553zM16 3.5c2.18262 0 3.95801 1.77539 3.95801 3.95801 0 2.18213-1.77539 3.95752-3.95801 3.95752s-3.95801-1.77539-3.95801-3.95752C12.04199 5.27539 13.81738 3.5 16 3.5zM23.75879 16.59961H8.24121c-4.1084 0-7.4502 3.34229-7.4502 7.4502S4.13281 31.5 8.24121 31.5h15.51758c4.1084 0 7.4502-3.34229 7.4502-7.4502S27.86719 16.59961 23.75879 16.59961zM23.75879 28.5H8.24121c-2.4541 0-4.4502-1.99658-4.4502-4.4502s1.99609-4.4502 4.4502-4.4502h15.51758c2.4541 0 4.4502 1.99658 4.4502 4.4502S26.21289 28.5 23.75879 28.5z"></path></svg>
 
     default:
       return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-300 group-hover:text-rose-300">
@@ -314,7 +314,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
                 onClick={() => setPage(pageSelect)}  
               >
                   <BottomIcon pageSelected={pageSelect} />
-                  <span className="text-sm text-slate-300 group-hover:text-rose-300">{pageSelect}</span>
+                  {/* <span className="text-sm text-slate-300 group-hover:text-rose-300">{pageSelect}</span> */}
               </button>
             })}
         </div>
@@ -341,13 +341,14 @@ const Home: NextPage<Props> = ({ token }: Props) => {
                 </div>
 
                 <div className="w-full h-[50%]">
-                  <div className="text-sm text-gray-600 p-3">Check In on Twitter</div>
+                  Tweet with hashtags for rewards: <span className="text-slate-600">{`#hk2023 ${eventDetails.hashTag}`}</span>.  <br/>
+                  {/* <div className="text-sm text-gray-600 p-3">Check In on Twitter</div>
                   <button 
                     type="button" 
                     className="text-slate-200 bg-gray-500 font-small rounded-full text-lg px-5 py-2.5"
                   >
                     <RightIcon />
-                  </button>
+                  </button> */}
                 </div>
             </div>
 

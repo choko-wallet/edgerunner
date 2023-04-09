@@ -12,9 +12,9 @@ export const Promotion = (): JSX.Element => {
 
   const promotions = [
     "http://via.placeholder.com/640x360",
-    "https://dummyimage.com/640x360/fff/aaa",
-    "https://loremflickr.com/640/360",
-    "https://baconmockup.com/640/360",
+    "http://via.placeholder.com/640x360",
+    "http://via.placeholder.com/640x360",
+
   ]
 
   return (<>
@@ -30,7 +30,6 @@ export const Promotion = (): JSX.Element => {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="font-slate-200"
       >
@@ -39,7 +38,6 @@ export const Promotion = (): JSX.Element => {
         </SwiperSlide>)}
       </Swiper>
 
-      
     </div>
   </>);
 }
