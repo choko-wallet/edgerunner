@@ -51,32 +51,33 @@ export const Profile = ({ address }: Props ) => {
         {address}
       </p>
 
-      <div className='flex space-x-2 items-center justify-center py-2'>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 animate-bounce text-indigo-500">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
-        </svg>
+      <p className='text-gray-500 font-roboto text-center text-sm'>
+        Now, you are able to post contents on twitter and receive rewards from <a href="https://alpha.wormhole3.io/" className="underline px-1" target="_blank">Wormhol3 Alpha</a>.
+      </p>
+
+      <p className='text-gray-500 font-roboto text-center text-sm'>
+        Join our <a className="underline px-1" href='https://discord.com/invite/zkp8UEQctM'>discord server</a> and head over to the #HK2023 channel to receive updates or let us know if you spot anything wrong. 
+      </p>
+
+      <div className="px-15 m-5 flex">
+        <button
+          className='font-poppins items-center bg-indigo-400 justify-center text-[16px] text-slate-200 rounded-md hover:shadow-sm p-3 px-5 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+          onClick={() => {
+            localStorage.removeItem("address");
+            signOut().catch(console.error)
+          }}
+        >
+          Sign Out
+        </button>
       </div>
-
-      {/* <button
-        className='flex items-center justify-center text-[20px] text-gray-700 rounded-md hover:shadow-sm p-2 w-full border-2 border-indigo-400 font-inter transition duration-150 active:scale-95 ease-in-out'
-        onClick={() => enterChoko()}
-      >
-        Create Wallet with CHOKO
-      </button><br/> */}
-
-      <div className='flex items-center justify-center w-full my-5'>
-        <div className='w-full h-[1px] bg-gray-300'></div>
-      </div>
-
-      <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5' onClick={() => {
+      {/* <p className='text-gray-700  font-roboto text-center text-[20px] pt-5' onClick={() => {
         localStorage.removeItem("address");
         signOut().catch(console.error)
       }}>
         SignOut
-      </p>
-      <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5'>
-        For now, all your behaviours will be automatically loaded by Wormhole3
-      </p>
+      </p> */}
+
+      
     </div>
   </div>
 }

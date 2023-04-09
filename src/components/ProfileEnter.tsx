@@ -14,9 +14,6 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
         <span className='text-black font-normal mr-2 whitespace-nowrap'>
             You are signed in with 
         </span>
-        {/* <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
-          {`CHOKO  `}<span className='text-sm'>Beta ²</span>
-        </a> */}
       </p>
 
       <div className='flex items-center justify-between'>
@@ -48,6 +45,14 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
         Now you can create a wallet address!
       </p>
 
+      <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
+        CHOKO is currently in beta and might involve risks to use. If you are experiencing delay, that means a lots of folks are playing with it :)
+      </p>
+
+      <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
+        Please drop us a message if you beleive something is wrong. That's what Beta for.
+      </p>
+
       <div className='flex space-x-2 items-center justify-center py-2'>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 animate-bounce text-indigo-500">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
@@ -66,8 +71,8 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
       </div>
 
       <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5'>
-        CHOKO is a bleeding edge MPC & EIP4337 Web3 Portal. To proceed, you will be running a native light node directly inside of your browser to generate a crypto wallet. To learn more - join our  
-        <a className="underline decoration-rose-400 underline-offset-4 decoration-1" target="_blank" href="https://google.com"> discord channel.</a>. 
+        CHOKO is a bleeding edge MPC & EIP4337 Web3 base layer open protocol. To proceed, you will be running a native light node directly inside of your browser to generate a crypto wallet. To learn more, follow our  
+        <a className="underline decoration-rose-400 underline-offset-4 decoration-1" target="_blank" href="https://twitter.com/choko_wallet"> twitter.</a>
       </p>
     </div>
   </div>

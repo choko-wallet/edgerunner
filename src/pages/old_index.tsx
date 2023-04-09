@@ -191,21 +191,16 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
       </Head>
 
       <main className="h-screen bg-landing-bg bg-cover">
-        <div className="flex flex-col justify-around py-10 w-full h-full backdrop-blur-sm backdrop-grayscale-[.2]">
+        <div className="flex flex-col justify-around py-10 w-full h-full backdrop-blur-sm backdrop-grayscale-[.7]">
           <div className="flex w-full h-20 text-2xl text-slate-200 font-poppins justify-center">
             Hong Kong 2023
           </div>
-          <div className="flex w-full text-2xl text-slate-200 justify-center pl-4 pt-5">
-            <img src={logoImg.src} width={400} className="" />
+          <div className="flex w-full text-2xl text-slate-200 justify-center pl-4">
+            <img src={logoImg.src} width={400} className="invert-[10%]" />
           </div>
 
-          <div className="w-full text-lg text-slate-200  font-poppins">
-            <div className="w-full flex justify-center">{`Brought To You By  `}</div>
-            <div className="pl-2 w-full flex justify-center">
-              <a href="https://twitter.com/choko_wallet" className="underline px-2" target="_blank">CHOKO Beta</a>
-              And
-              <a href="https://alpha.wormhole3.io/" className="underline px-2" target="_blank">Wormhol3 Alpha</a>
-            </div>
+          <div className="flex w-full text-lg text-slate-200 justify-center font-poppins">
+            {`Brought To You By  `}<div className="underline pl-2"><a href="https://staging.choko.app" target="_blank">CHOKO Beta</a></div>
           </div>
           {/* Login Part */}
           {loginPending ? <div className="flex justify-start flex-col">

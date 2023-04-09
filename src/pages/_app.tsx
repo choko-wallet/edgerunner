@@ -17,6 +17,12 @@ function Root({
   return (
     <Provider store={store}>
       <Head>
+        <script
+          async
+          defer
+          data-website-id="29b8f398-606e-496f-b31a-4e8d8e2abe76"
+          src="https://analytics.skye.kiwi/umami.js"
+        ></script>
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"

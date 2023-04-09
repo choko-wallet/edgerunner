@@ -137,7 +137,6 @@ const Home: NextPage<Props> = ({ token }: Props) => {
   
   const enterChoko = async () => {
     dispatch(setLoading('Setting up an MPC Account ... '));
-
     try {
       if (!session || !session.user || !session.user.email) {
         console.error("unexpected");
@@ -178,12 +177,6 @@ const Home: NextPage<Props> = ({ token }: Props) => {
   if (isLoading || result.isLoading) return <Loading />
   return (
     <div className="bg-indigo-400">
-      <Head>
-        <title>Edgerunner</title>
-        <meta name="description" content="edgerunner" />
-        <link rel="icon" href="/favicon.ico" />
-        <script async defer data-website-id="29b8f398-606e-496f-b31a-4e8d8e2abe76" src="https://analytics.skye.kiwi/umami.js"></script>
-      </Head>
 
       <div className="sticky top-0 z-50 backdrop-blur-md backdrop-grayscale-[.5]" >
         <TopNav />
@@ -203,9 +196,9 @@ const Home: NextPage<Props> = ({ token }: Props) => {
         {/* Main List */}
         <main className="flex min-h-screen pb-20 flex-col items-center justify-start bg-indigo-400">
           {/* Promotion */}
-          <div className="w-full p-2">
+          {/* <div className="w-full p-2">
             <Promotion />
-          </div>
+          </div> */}
 
           <Tab.Group>
             <Tab.List className="flex space-x-1 rounded-xl bg-gray-900/20 p-2 w-full">
