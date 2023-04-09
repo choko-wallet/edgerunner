@@ -18,7 +18,7 @@ export const Profile = ({ address }: Props ) => {
           Connected with
         </span>
         <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
-          {`CHOKO  `}<span className='text-sm'>Beta ²</span>
+          {`CHOKO  `}<span className=''>Beta ²</span>
         </a>
       </p>
 
@@ -52,16 +52,16 @@ export const Profile = ({ address }: Props ) => {
       </p>
 
       <p className='text-gray-500 font-roboto text-center text-sm'>
-        Now, you are able to post contents on twitter and receive rewards from <a href="https://alpha.wormhole3.io/" className="underline px-1" target="_blank">Wormhol3 Alpha</a>.
+        Join our <a className="underline" href='https://discord.com/invite/zkp8UEQctM'>Discord</a> #HK2023 channel to claim whitelist & receive updates. Let us know if you spot anything wrong. 
       </p>
 
       <p className='text-gray-500 font-roboto text-center text-sm'>
-        Join our <a className="underline px-1" href='https://discord.com/invite/zkp8UEQctM'>discord server</a> and head over to the #HK2023 channel to receive updates or let us know if you spot anything wrong. 
+        You can now post on twitter & receive rewards from <a href="https://alpha.wormhole3.io/" className="underline px-1" target="_blank">Wormhole3</a>.
       </p>
 
       <div className="px-15 m-5 flex">
         <button
-          className='font-poppins items-center bg-indigo-400 justify-center text-[16px] text-slate-200 rounded-md hover:shadow-sm p-3 px-5 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
+          className='font-poppins items-center bg-indigo-400 justify-center text-[16px] text-slate-200 rounded-md hover:shadow-sm mt-3 p-3 px-5 w-full font-inter transition duration-150 active:scale-95 ease-in-out'
           onClick={() => {
             localStorage.removeItem("address");
             signOut().catch(console.error)

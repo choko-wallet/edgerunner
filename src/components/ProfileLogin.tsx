@@ -20,7 +20,8 @@ export const ProfileLogin = () => {
       </p>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        One click to generate your crypto social profile with the first Web3 portal - CHOKO.
+        One click to generate your crypto social profile with CHOKO & tweet to receive rewards.
+
       </p>
 
       <div className='flex space-x-2 items-center justify-center py-2'>
@@ -46,7 +47,7 @@ export const ProfileLogin = () => {
       </div>
 
       <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5'>
-        CHOKO is a bleeding edge MPC & EIP4337 Web3 base layer open protocol. To proceed, you will be running a native light node directly inside of your browser to generate a crypto wallet. To learn more, follow our  
+        CHOKO is a bleeding edge MPC & EIP4337 Web3 base layer open protocol. Connect to run a native light node directly inside of your browser to generate a crypto wallet. To learn more, follow our  
         <a className="underline decoration-rose-400 underline-offset-4 decoration-1" target="_blank" href="https://twitter.com/choko_wallet"> twitter.</a>
       </p>
     </div>

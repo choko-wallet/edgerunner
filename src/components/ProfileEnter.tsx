@@ -12,7 +12,7 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
     <div className=' flex flex-col items-center justify-center space-y-4 p-12 bg-slate-200 rounded-lg drop-shadow-xl' >
       <p className=' text-black flex flex-grow font-roboto text-[20px] sm:text-[24px] font-semibold whitespace-nowrap pb-2'>
         <span className='text-black font-normal mr-2 whitespace-nowrap'>
-            You are signed in with 
+            Signed in with 
         </span>
       </p>
 
@@ -42,15 +42,12 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
       </div>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        Now you can create a wallet address!
+        Click below to create your wallet address!
       </p>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        CHOKO is currently in beta and might involve risks to use. If you are experiencing delay, that means a lots of folks are playing with it :)
-      </p>
+        CHOKO is in Beta. Delay might happen due to high traffic. Please drop us a message if you're having issue.
 
-      <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        Please drop us a message if you beleive something is wrong. That's what Beta for.
       </p>
 
       <div className='flex space-x-2 items-center justify-center py-2'>
@@ -63,7 +60,7 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
         className='flex items-center justify-center text-[20px] text-gray-700 rounded-md hover:shadow-sm p-2 w-full border-2 border-indigo-400 font-inter transition duration-150 active:scale-95 ease-in-out'
         onClick={() => enterChoko()}
       >
-        Create Wallet with CHOKO
+        Create Social Wallet with CHOKO
       </button><br/>
 
       <div className='flex items-center justify-center w-full my-5'>
@@ -71,7 +68,7 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
       </div>
 
       <p className=' text-gray-500  font-roboto text-center text-[12px] pt-5'>
-        CHOKO is a bleeding edge MPC & EIP4337 Web3 base layer open protocol. To proceed, you will be running a native light node directly inside of your browser to generate a crypto wallet. To learn more, follow our  
+        CHOKO is a bleeding edge MPC & EIP4337 Web3 base layer open protocol. Click to run a native light node directly inside of your browser to generate a crypto wallet. To learn more, follow our  
         <a className="underline decoration-rose-400 underline-offset-4 decoration-1" target="_blank" href="https://twitter.com/choko_wallet"> twitter.</a>
       </p>
     </div>
