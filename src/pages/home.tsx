@@ -112,12 +112,9 @@ const generateOrRefreshAccount = async (
 
 
 const Home: NextPage<Props> = ({ token }: Props) => {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const result = api.events.getAll.useQuery();
-
   const {data: session} = useSession()
 
-  const allEvents = result.data!;
   const dispatch = useDispatch();
 
   const eventDetails = useSelector(selectEventDetail);
@@ -128,14 +125,11 @@ const Home: NextPage<Props> = ({ token }: Props) => {
   const [page, setPage] = useState("Home");
 
   const [openDetails, setOpenDetails] = useState(false);
+  const [allEvents, setAllEvents] = useState([]);
 
-  if (result.isLoading) {
-    dispatch(setLoading("Loading Events ..."))
-  } else {
-    dispatch(cancelLoading())
-  }
-  
   const enterChoko = async () => {
+    if (result.isLoading) alert("loading ..")
+
     dispatch(setLoading('Setting up an MPC Account ... '));
     try {
       if (!session || !session.user || !session.user.email) {
@@ -167,14 +161,17 @@ const Home: NextPage<Props> = ({ token }: Props) => {
   };
   
   useEffect(() => {
+    if (result.isLoading) return;
+
     dispatch(setLoading("Loading Account"))
     const shouldBeOnPage = localStorage.getItem("pageRedirect");
     setPage(shouldBeOnPage ? shouldBeOnPage : "Home")
     dispatch(loadAccount());
     dispatch(cancelLoading())
-  }, [dispatch])
+  }, [dispatch, result.isLoading])
 
   if (isLoading || result.isLoading) return <Loading />
+
   return (
     <div className="bg-indigo-400">
 
@@ -234,7 +231,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
             leaveTo="opacity-0 scale-95 "
           >
             <div className="w-full">
-              {allEvents.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf()).map((evt, index) => {
+              {result.data!.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf()).map((evt, index) => {
                 if (!evt.isMeetup)
                   return <EventDisplay 
                     key={index}
@@ -257,7 +254,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
             leaveTo="opacity-0 scale-95 "
           >
             <div className="w-full">
-              {allEvents.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf()).map((evt, index) => {
+              {result.data!.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf()).map((evt, index) => {
                 if (evt.isMeetup)
                   return <EventDisplay 
                     key={index}
