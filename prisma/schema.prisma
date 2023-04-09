@@ -18,6 +18,7 @@ model Event {
     hostList  String
     locationText String
     locationGoogle String
+    cohostList String
     tweet String
     hashTag String
     isMeetup Boolean

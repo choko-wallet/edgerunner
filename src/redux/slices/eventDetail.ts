@@ -26,6 +26,8 @@ const initialState: EventDisplay = {
     locationGoogle: "",
     tweet: "",
     hashTag: "",
+    isMeetup: false,
+    cohostList: "",
   },
 };
 

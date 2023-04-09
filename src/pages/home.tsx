@@ -235,6 +235,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
           >
             <div className="w-full">
               {allEvents.map((evt, index) => {
+                if (!evt.isMeetup)
                   return <EventDisplay 
                     key={index}
                     eventDetail={evt}
@@ -257,6 +258,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
           >
             <div className="w-full">
               {allEvents.map((evt, index) => {
+                if (evt.isMeetup)
                   return <EventDisplay 
                     key={index}
                     eventDetail={evt}
