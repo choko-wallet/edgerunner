@@ -234,7 +234,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
             leaveTo="opacity-0 scale-95 "
           >
             <div className="w-full">
-              {allEvents.map((evt, index) => {
+              {allEvents.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf()).map((evt, index) => {
                 if (!evt.isMeetup)
                   return <EventDisplay 
                     key={index}
@@ -257,7 +257,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
             leaveTo="opacity-0 scale-95 "
           >
             <div className="w-full">
-              {allEvents.map((evt, index) => {
+              {allEvents.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf()).map((evt, index) => {
                 if (evt.isMeetup)
                   return <EventDisplay 
                     key={index}
