@@ -14,13 +14,13 @@ export const ProfileLogin = () => {
         <span className='text-black font-normal mr-2 whitespace-nowrap'>
           Connect with
         </span>
-        <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://twitter.com/choko_wallet' target="_blank">
-          {`CHOKO  `}Beta ²
-        </a>
+        <a className='underline decoration-rose-300 underline-offset-4 decoration-2 pr-2' href='https://twitter.com/choko_wallet' target="_blank">
+          {`CHOKO`}
+        </a>{` Beta ²`}
       </p>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        One click to generate your crypto social profile with CHOKO & tweet to receive rewards.
+        One click to generate your crypto social profile with CHOKO & tweet to receive rewards from Wormhole3.
 
       </p>
 
@@ -34,7 +34,7 @@ export const ProfileLogin = () => {
         className='flex items-center justify-center text-[20px] text-gray-700 rounded-md hover:shadow-sm p-2 w-full border-2 border-indigo-400 font-inter transition duration-150 active:scale-95 ease-in-out'
         onClick={() => login()}
       >
-        Connect With
+        Connect with
         <img
           // loading='lazy'
           className='w-6 h-6 ml-3'
