@@ -55,7 +55,7 @@ export const EventDisplay = ({eventDetail, showDetails}: Props): JSX.Element => 
               dispatch(setDetails(eventDetail))
               showDetails()
             }}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-slate-200 rounded-lg hover:bg-indigo-700 bg-blue-500">
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-slate-200 rounded-lg hover:bg-rose-700 bg-rose-500">
             Learn More
           </a>
         </div>

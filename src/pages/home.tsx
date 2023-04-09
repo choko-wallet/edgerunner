@@ -324,7 +324,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
           <Dialog.Panel className='fixed bottom-0 left-0 z-50 w-full h-80 rounded-t-2xl'>
             <Dialog.Title
               as='h3'
-              className='text-lg font-medium leading-6 flex items-center bg-purple-400 rounded-t-2xl h-16 p-5'
+              className='text-lg font-medium leading-6 flex items-center bg-rose-400 rounded-t-2xl h-16 p-5'
             >
               <p className=' text-slate-200 flex flex-grow'>
                 {eventDetails.eventName}
@@ -334,7 +334,7 @@ const Home: NextPage<Props> = ({ token }: Props) => {
               </div>
             </Dialog.Title>
 
-            <div className=' p-2 bg-purple-200 w-full h-64'>
+            <div className=' p-2 bg-rose-200 w-full h-64'>
 
                 <div className="bg-red w-full h-[20%] text-gray-700 pt-5 flex justify-start">
                   <span><b>Location:</b> <a className="underline decoration-rose-400 underline-offset-4 decoration-3" href={eventDetails.locationGoogle} target="_blank">{`${eventDetails.locationText}`}</a></span>
