@@ -9,13 +9,6 @@ import { useDispatch } from 'react-redux';
 import { setDetails } from '~/redux/slices/eventDetail';
 import { Event } from '@prisma/client';
 
-interface HostProps {
-  hostName: string
-}
-const HostDisplay = ({hostName}: HostProps) => {
-  return <span>{`${hostName} ｜ `}</span>
-}
-
 interface Props {
   eventDetail: Event,
   showDetails: () => void
@@ -29,7 +22,7 @@ export const EventDisplay = ({eventDetail, showDetails}: Props): JSX.Element => 
 
 
   const dispatch = useDispatch();
-  const {eventName, hostList, startTime, endTime} = eventDetail;
+  const {eventName, startTime, endTime} = eventDetail;
 
   // current date
   const currentDate = new Date().getUTCDate();
@@ -48,7 +41,7 @@ export const EventDisplay = ({eventDetail, showDetails}: Props): JSX.Element => 
           <span className='text-slate-300'>{`  to `}</span>
           <span className='text-slate-400'>{dayjs(endTime).tz('UTC').format("HH:mm")}</span>
         </h5>
-        <div className="text-sm text-slate-200"><span className='text-slate-400'>Hosted By: </span>{hostList.split("|").map((name, index) => <HostDisplay key={`Host${index}`} hostName={name} />)} </div>
+        <div className="text-sm text-slate-200"><span className='text-slate-400'><a href={eventDetail.locationGoogle}>{eventDetail.locationText}</a></span></div>
         <div className="flex mt-4 space-x-3 md:mt-6">
           <a
             onClick={() => {

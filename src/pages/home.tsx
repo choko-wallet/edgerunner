@@ -332,10 +332,9 @@ const Home: NextPage<Props> = ({ token }: Props) => {
             </Dialog.Title>
 
             <div className=' p-2 bg-rose-200 w-full h-64'>
-
-                <div className="bg-red w-full h-[20%] text-gray-700 pt-5 flex justify-start">
-                  <span><b>Location:</b> <a className="underline decoration-rose-400 underline-offset-4 decoration-3" href={eventDetails.locationGoogle} target="_blank">{`${eventDetails.locationText}`}</a></span>
-                </div>
+                {eventDetails.hostList ? <div className="bg-red w-full h-[30%] text-gray-700 text-[14px] pt-5">
+                  <b>Host:</b>{eventDetails.hostList.split("|").map(host => `${host} | `)}
+                </div> : <></>}
 
                 {eventDetails.cohostList ? <div className="bg-red w-full h-[30%] text-gray-700 text-[14px] pt-5">
                   <b>CoHost:</b>{eventDetails.cohostList.split("|").map(coHost => `${coHost} | `)}
@@ -345,7 +344,8 @@ const Home: NextPage<Props> = ({ token }: Props) => {
                   <div className="text-sm text-gray-600 p-3">Tweet with hashtags for rewards: <a className="text-slate-500" href={`https://twitter.com/intent/tweet?text=%0a${encodeURIComponent(`#hk2023 ${eventDetails.hashTag} #choko`)}`} target="_blank">{`#hk2023 ${eventDetails.hashTag} #choko`}</a>.</div>
                   <button 
                     type="button" 
-                    className="text-slate-200 bg-gray-500 font-small rounded-full text-lg px-2.5 py-2.5"
+                    className="text-slate-200 bg-gray-700 font-small rounded-full text-lg px-2.5 py-2.5"
+                    onClick={() => window.location.href = `https://twitter.com/intent/tweet?text=%0a${encodeURIComponent(`#hk2023 ${eventDetails.hashTag} #choko`)}`}
                   >
                     <PlusIcon />
                   </button>
