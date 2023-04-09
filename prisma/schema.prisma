@@ -20,4 +20,5 @@ model Event {
     locationGoogle String
     tweet String
     hashTag String
+    isMeetup Boolean
 }

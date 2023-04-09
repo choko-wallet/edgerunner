@@ -133,6 +133,7 @@ const Landing: NextPage<Props> = ({ token }: Props) => {
 
   useEffect(() => {
     if (userAddr) {
+      localStorage.removeItem('pageRedirect')
       setLoginPending(false)
       setShowLogin(false)
     } else {

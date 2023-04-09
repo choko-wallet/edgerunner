@@ -14,8 +14,8 @@ export const ProfileLogin = () => {
         <span className='text-black font-normal mr-2 whitespace-nowrap'>
           Connect with
         </span>
-        <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://staging.choko.app' target="_blank">
-          {`CHOKO  `}<span className='text-sm'>Beta ²</span>
+        <a className='underline decoration-rose-400 underline-offset-4 decoration-4' href='https://twitter.com/choko_wallet' target="_blank">
+          {`CHOKO  `}Beta ²
         </a>
       </p>
 

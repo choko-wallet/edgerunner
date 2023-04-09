@@ -16,18 +16,18 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
         </span>
       </p>
 
-      <div className='flex items-center justify-between'>
+      <div className='flex justify-center'>
         <img
           alt=''
-          className='rounded-full border p-[2px] w-12 h-12'
+          className='rounded-full border w-12 h-12'
           src={session?.user?.image as string}
         />
 
-        <div className='mx-4'>
-          <h2 className='font-bold w-44 truncate'>
+        <div className='px-2'>
+          <h2 className='font-bold w-36 truncate'>
             {session?.user?.name}
           </h2>
-          <h3 className='text-sm text-gray-400 w-44'>
+          <h3 className='text-sm text-gray-400 w-36'>
             
             {
               // @ts-ignore
@@ -35,14 +35,11 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
             }
           </h3>
         </div>
-
-        <img className='w-8 h-8 mr-3'
-          src={"https://authjs.dev/img/providers/twitter.svg"}
-        />
+        <img className='w-8 h-8 m-2' src={"https://authjs.dev/img/providers/twitter.svg"} />
       </div>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
-        Click below to create your wallet address!
+        Click below to create your social wallet address!
       </p>
 
       <p className='text-gray-500 flex flex-grow font-roboto text-center text-sm'>
@@ -57,10 +54,10 @@ export const ProfileEnter = ({ enterChoko }: Props ) => {
       </div>
 
       <button
-        className='flex items-center justify-center text-[20px] text-gray-700 rounded-md hover:shadow-sm p-2 w-full border-2 border-indigo-400 font-inter transition duration-150 active:scale-95 ease-in-out'
+        className='flex items-center justify-center text-[16px] text-gray-700 rounded-md hover:shadow-sm p-2 w-full border-2 border-indigo-400 font-inter transition duration-150 active:scale-95 ease-in-out'
         onClick={() => enterChoko()}
       >
-        Create Social Wallet with CHOKO
+        Create with CHOKO
       </button><br/>
 
       <div className='flex items-center justify-center w-full my-5'>
